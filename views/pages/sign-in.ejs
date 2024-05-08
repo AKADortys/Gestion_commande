@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/global.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+</head>
+<body>
+    <% if (infoUser.id) { %>
+    <aside>
+        <ul>
+            <li><a href="/main">Accueil</a></li>
+            <li><a href="/signin?id=<%=infoUser.id%>">Modifier mon compte</a></li>
+            <li><a href="/addProduct">Ajouter un produit</a></li>
+            <li><a href="/addCommand">Créer une commande</a></li>
+            <li><a href="/historic">Mon historique</a></li>
+        </ul>
+    </aside>
+    <% } %>
+    <main>
+    <h1>Formulaire utilisateur</h1>
+    <form action="/sign-in" method="POST">
+        <% if (utilisateur.id) {%>
+            <a href="/deleteUser?id=<%=utilisateur.id%>">Supprimer mon compte</a>
+            <input type="hidden" name="id" value="<%= utilisateur.id %>">
+        <% } %>
+        <table>
+            <tr>
+                <td>Nom :</td> <td><input type="text" name="nom" <%if (utilisateur.nom){%>value="<%=utilisateur.nom%>"<%}%>></td>
+            </tr>
+            <tr>
+                <td>Prenom :</td> <td><input type="text" name="prenom" <%if (utilisateur.prenom){%>value="<%=utilisateur.prenom%>"<%}%>></td>
+            </tr>
+            <tr>
+                <td>Mot de passe :</td> <td><input type="password" name="pass"></td>
+            </tr>
+            <tr>
+                <td>Confirmez votre mot de passe :</td> <td><input type="password" name="passc"></td>
+            </tr>
+            <tr>
+                <td>Telephone :</td> <td><input type="text" name="telephone" <%if (utilisateur.telephone){%>value="<%=utilisateur.telephone%>"<%}%>></td>
+            </tr>
+            <tr>
+                <td>Mail :</td> <td><input type="text" name="mail" <%if (utilisateur.mail){%>value="<%=utilisateur.mail%>"<%}%>></td>
+            </tr>
+            <% if (utilisateur.id) {%>
+                <tr>
+                    <td><input type="submit" value="Modifier"></td> <td><input type="reset" value="Annuler"></td>
+                </tr>
+
+            <% } else { %>
+            <tr>
+                <td><input type="submit" value="Créer un compte"></td> <td><input type="reset" value="Annuler"></td>
+            </tr>
+            <% } %>
+        </table>
+    </form>
+</main>
+</body>
+</html>

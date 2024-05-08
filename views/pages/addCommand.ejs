@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/global.css">
+    <title>Créer une commande</title>
+</head>
+<body>
+    <aside>
+        <ul>
+            <li><a href="/main">Accueil</a></li>
+            <li><a href="/signin?id=<%=infoUser.id%>">Modifier mon compte</a></li>
+            <li><a href="/addProduct">Ajouter un produit</a></li>
+            <li><a href="/addCommand">Créer une commande</a></li>
+            <li><a href="/historic">Mon historique</a></li>
+        </ul>
+    </aside>
+    <main>
+        <h1>Gestion d'une commande</h1>
+        <%if (allProduct.length > 0) {%>
+        <form action="/addArticle" method="post">
+            <input type="hidden" name="id_user" value="<%=command.id_user%>">
+            <input type="hidden" name="id_command" value="<%=command.id%>">
+            <table>
+                <tr>
+                    <td>
+                        <select name="id_prod">
+                            <% allProduct.forEach((n)=>{%>
+                                <option value="<%=n.id%>"><%=n.designation%> (<%=n.info%>)</option>
+                                <% }) %>
+                            </select>
+                        </td>
+                        <td><input type="number" name="quantite"></td>
+                        <td><input type="submit" value="Ajouter"></td>
+                    </tr>
+                </table>
+            </form>
+        
+            <table>
+                <tr>
+                    <th>Nom produit</th> <th>Description</th> <th>Informations</th> <th>Quantité</th> <th>Prix/unit</th> <th>Total</th> <th>Modification</th>
+                </tr>
+                <% if (command.products.length > 0) { command.products.forEach((n)=>{%>
+                    <tr>
+                        <td><%=n.designation%></td>
+                        <td><%=n.description%></td>
+                        <td><%=n.info%></td>
+                        <td><%=n.quantite%></td>
+                        <td><%=n.prix%> eu</td>
+                        <td><%=n.total%> eu</td>
+                        <td><a href="/removeArticle?id_command=<%=command.id%>&id_product=<%=n.id%>">Retirer</a></td>
+                    </tr>
+                    <% })} %>
+                </table>
+                <form action="/confirmCommand" method="post">
+                    <input type="hidden" name="commandID" value="<%=command.id%>">
+                    <input type="date" name="date">
+                    <input type="submit" value="Confirmer la commande">
+                </form>
+                <% } else { %>
+                    <p>Il n'y a rien ici pour le moment</p>
+                <% } %>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

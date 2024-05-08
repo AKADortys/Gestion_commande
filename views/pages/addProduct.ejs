@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/global.css">
+    <title>Ajouter un produit</title>
+</head>
+<body>
+    <aside>
+        <ul>
+            <li><a href="/main">Accueil</a></li>
+            <li><a href="/signin?id=<%=infoUser.id%>">Modifier mon compte</a></li>
+            <li><a href="/addProduct">Ajouter un produit</a></li>
+            <li><a href="/addCommand">Créer une commande</a></li>
+            <li><a href="/historic">Mon historique</a></li>
+        </ul>
+    </aside>
+    <main>
+    <form action="/add-product" method="post">
+        <% if (product.id) {%>
+            <input type="hidden" value="<%=product.id%>" name="id">
+        <% } %>
+        <table>
+            <tr>
+                <td>Désignation :</td> <td><input type="text" name="designation" <%if(product.designation){%>value="<%=product.designation%>"<%}%>></td>
+            </tr>
+            <tr>
+                <td>Description :</td> <td><textarea name="description"><%=product.description%></textarea></td>
+            </tr>
+            <tr>
+                <td>Prix :</td> <td><input type="text" name="prix" <%if(product.prix){%>value="<%=product.prix%>"<%}%>></td>
+            </tr>
+            <tr>
+                <td>Information supplémentaire :</td> <td><input type="text" name="info" <%if(product.info){%>value="<%=product.info%>"<%}%>></td>
+            </tr>
+            <tr>
+                <%if (product.id) {%>
+                    <td><input type="submit" value="Modifier !"></td>
+                <% } else{%>
+                    <td><input type="submit" value="Créer !"></td>
+                <%}%>
+                <td><input type="reset" value="Annuler"></td>
+            </tr>
+        </table>
+    </form>
+</main>
+<footer>
+    
+</footer>
+</body>
+</html>

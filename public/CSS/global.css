@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: chocolate;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: center;
+    justify-content: center;
+}
+
+main{
+    width: 70%;
+    margin: 5px ;
+    background-color: rgba(128, 128, 128, 0.7);
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+aside{
+    width: 25%;
+    margin: 10px 5px;
+    padding: 0;
+    background-color: grey;
+    border: 2px solid black;
+}
+
+aside>ul{
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+}
+aside>ul>li{
+    margin: 0;
+    padding: 15px 5px;
+    border-bottom: 1px solid black;
+    font-size: large;
+}
+
+aside>ul>li>a{
+    color: yellow;
+    text-decoration: none;
+}
+
+h1, h2{
+    text-align: center;
+    width: 100%;
+    color: gold;
+}
+
+form{
+    width: 85%;
+}
+
+table{
+    width: 85%;
+    border: 3px outset goldenrod;
+    margin: 10px auto;
+    text-align: center;
+    background-color: rgb(148, 67, 1);
+}
+
+table td{
+    color: white;
+    padding: 10px 0;
+}
+
+table th{
+    border: 1px solid black;
+    background-color: aliceblue;
+}
+
+table a{
+    color: gold;
+    text-decoration: none;
+    font-weight: bold;
+    margin:0 7px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/global.css">
+    <title>Historique de commande</title>
+</head>
+<body>
+    <aside>
+        <ul>
+            <li><a href="/main">Accueil</a></li>
+            <li><a href="/signin?id=<%=infoUser.id%>">Modifier mon compte</a></li>
+            <li><a href="/addProduct">Ajouter un produit</a></li>
+            <li><a href="/addCommand">Créer une commande</a></li>
+            <li><a href="/historic">Mon historique</a></li>
+        </ul>
+    </aside>
+    <main>
+        <h1>Historique de commande de <%=infoUser.prenom%> <%=infoUser.nom%></h1>
+    <% if(allCommand) { for (const n of allCommand){%>
+    <div>
+        <table>
+            <tr>
+                <td>Date de validation: </td> <td><%=n.date%></td>
+            </tr>
+            <tr>
+                <td>Total de la commande: </td> <td><%=n.prix%></td>
+            </tr>
+            <tr>
+                <td>Heure de récupération prévue: </td> <td><%=n.recup%></td>
+            </tr>
+            <% if (n.confirm) { %>
+            <tr>
+                <td>Terminé</td>
+            </tr>
+            <% } %>
+        </table>
+        <table>
+            <tr>
+                <th>Produit</th> <th>Quantité</th> <th>Prix/unit</th> <th>Total</th>
+            </tr>
+            <% n.products.forEach((i)=>{ %>
+            <tr>
+                <td><%=i.designation%></td> <td><%=i.quantite%></td> <td><%=i.prix%></td> <td><%=i.total%></td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+    <% }} %>
+    </main>
+</body>
+</html>

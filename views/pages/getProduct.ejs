@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/global.css">
+    <title><%=produits.designation%></title>
+</head>
+<body>
+    <aside>
+        <ul>
+            <li><a href="/main">Accueil</a></li>
+            <li><a href="/signin?id=<%=infoUser.id%>">Modifier mon compte</a></li>
+            <li><a href="/addProduct">Ajouter un produit</a></li>
+            <li><a href="/addCommand">Créer une commande</a></li>
+            <li><a href="/historic">Mon historique</a></li>
+        </ul>
+    </aside>
+    <main>
+        <h1>Aperçu de produit</h1>
+        <section>
+            <h2><%=produits.designation%></h2>
+            <br>
+            <p><%=produits.description%></p>
+            <p><%=produits.info%></p><span><%=produits.prix%></span>
+            <a href="/addProduct?id=<%=produits.id%>">Modifier le produit</a>
+            <a href="/delete-product?id=<%=produits.id%>">supprimer le produit</a>
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

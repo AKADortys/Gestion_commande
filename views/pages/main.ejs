@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Principale</title>
+</head>
+<body>
+    <aside>
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="/main">Accueil</a></li>
+            <li><a href="/signin?id=<%=infoUser.id%>">Modifier mon compte</a></li>
+            <li><a href="/addProduct">Ajouter un produit</a></li>
+            <li><a href="/addCommand">Créer une commande</a></li>
+            <li><a href="/historic">Mon historique</a></li>
+        </ul>
+    </aside>
+    <main>
+    <p><%=infoUser.nom%></p>
+    <p><%=infoUser.prenom%></p>
+    <p><%=infoUser.mail%></p>
+    <p><%=infoUser.telephone%></p>
+    <h1>Tout les utilisateurs</h1>
+    <% if (allUser.length > 0) {%>
+    <table>
+        <tr>
+            <th>Nom</th> <th>Prenom</th> <th>Mail</th> <th>Telephone</th>
+        </tr>
+        <%allUser.forEach((n)=>{%>
+        <tr>
+            <td><%=n.nom%></td> <td><%=n.prenom%></td> <td><%=n.mail%></td> <td><%=n.telephone%></td>
+        </tr>
+        <% })%>
+    </table>
+    <% } %>
+    <h2>Tout les produits</h2>
+    <% if (allProduct.length > 0) {%>
+        <table>
+            <tr>
+                <th>Nom produit</th> <th>Description</th> <th>Prix</th> <th>Infos</th> <th>Modifications</th>
+            </tr>
+    <% allProduct.forEach((n)=> { %>
+            <tr>
+                <td><a href="/getProduct?id=<%=n.id%>"><%=n.designation%></a></td> <td><%=n.description%></td> <td><%=n.prix%></td> <td><%=n.info%></td> <td><a href="/addProduct?id=<%=n.id%>">Modifier</a> <a href="/delete-product?id=<%=n.id%>">Supprimer</a></td>
+            </tr>
+    <% }) %>
+        </table>
+    <% } %>
+</main>
+<footer>
+    
+</footer>
+</body>
+</html>
